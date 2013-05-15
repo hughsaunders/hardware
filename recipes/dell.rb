@@ -74,7 +74,7 @@ end
 
 platform_options["omsa_packages"].each do |pkg|
   package pkg do
-    action :install
+    action node["osops"]["do_package_upgrades"] == true ? :upgrade : :install
   end
 end
 

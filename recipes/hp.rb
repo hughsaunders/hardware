@@ -62,7 +62,7 @@ end
 
 %W{snmpd hponcfg hpacucli cpqacuxe hp-smh-templates hp-health hp-snmp-agents}.each do |pkg|
   package pkg do
-    action :install
+    action node["osops"]["do_package_upgrades"] == true ? :upgrade : :install
     # unsigned repo.  :(
     options "--force-yes"
   end
